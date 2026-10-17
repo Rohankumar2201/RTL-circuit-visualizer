@@ -1,0 +1,25 @@
+{
+  "name": "rtl-circuit-visualizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Interactive RTL-to-hardware visualizer for a documented Verilog/SystemVerilog subset",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "jsdom": "^30.1.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}

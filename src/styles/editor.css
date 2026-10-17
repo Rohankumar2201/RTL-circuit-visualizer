@@ -1,0 +1,17 @@
+.editor-panel #editor { flex: 1; min-height: 0; }
+.ed { display: flex; background: var(--pn); font: 13px/20px ui-monospace, Menlo, Consolas, monospace; }
+.ed-gutter { overflow: hidden; min-width: 38px; padding: 8px 6px 8px 4px; text-align: right; color: var(--mu); background: var(--bg); user-select: none; }
+.ed-gutter div { height: 20px; }
+.ed-gutter .mk-error { color: #fff; background: var(--err); border-radius: 2px; }
+.ed-gutter .mk-warning { color: #1b1200; background: var(--warn); border-radius: 2px; }
+.ed-gutter .mk-info { color: var(--ac); }
+.ed-code { position: relative; flex: 1; min-width: 0; }
+.ed-hl, .ed-src { position: absolute; inset: 0; margin: 0; padding: 8px; font: inherit; white-space: pre; border: 0; tab-size: 4; letter-spacing: 0; }
+.ed-hl { overflow: hidden; pointer-events: none; color: var(--tx); }
+.ed-src { overflow: auto; background: transparent; color: transparent; caret-color: var(--tx); resize: none; outline: 0; }
+.ed-src::selection { background: color-mix(in srgb, var(--ac) 40%, transparent); }
+.tk-k { color: var(--kw); }
+.tk-n { color: var(--num); }
+.tk-c { color: var(--cm); font-style: italic; }
+.tk-s { color: var(--str); }
+.tk-sys { color: var(--ac); }

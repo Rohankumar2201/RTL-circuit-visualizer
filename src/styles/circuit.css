@@ -1,0 +1,47 @@
+.canvas-wrap { position: relative; flex: 1; min-height: 0; }
+#cv {
+  position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: grab; background-color: var(--bg);
+  background-image: linear-gradient(var(--gr) 1px, transparent 1px), linear-gradient(90deg, var(--gr) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+#cv:active { cursor: grabbing; }
+.overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--mu); pointer-events: none; }
+.overlay[hidden] { display: none; }
+.overlay strong { color: var(--tx); font-size: 15px; margin-bottom: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; padding: 4px 10px; border-top: 1px solid var(--bd); font-size: 11px; color: var(--mu); background: var(--pn); }
+.lg::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 4px; border: 1.5px solid var(--wire); vertical-align: -1px; }
+.lg.seq::before { background: var(--reg); }
+.lg.io::before { border-radius: 0 6px 6px 0; }
+.lg.bad::before { border: 1.5px dashed var(--err); }
+.lg.up::before { border-color: var(--up); background: var(--up); }
+.lg.down::before { border-color: var(--down); background: var(--down); }
+
+.node { cursor: pointer; outline: none; }
+.node .shape { fill: var(--nd); stroke: var(--wire); stroke-width: 1.5; }
+.node.seq .shape { fill: var(--reg); stroke-width: 2; }
+.node.io .shape { stroke-width: 1.8; }
+.node.k-const .shape { stroke-dasharray: none; fill: var(--bg); }
+.node.bad .shape { stroke: var(--err); stroke-dasharray: 4 3; }
+.node.conflict .shape { stroke: var(--err); stroke-width: 2.5; fill: color-mix(in srgb, var(--err) 18%, var(--nd)); }
+.node.inst .shape { stroke-width: 2; }
+.node text { fill: var(--tx); pointer-events: none; text-anchor: middle; font-family: ui-monospace, Menlo, Consolas, monospace; }
+.node text.title { font-size: 12px; font-weight: 600; }
+.node text.sub { font-size: 10px; fill: var(--mu); }
+.node text.pinname { font-size: 9px; fill: var(--mu); }
+.node .pin { fill: var(--wire); }
+.node .bubble { fill: var(--nd); stroke: var(--wire); stroke-width: 1.5; }
+.node .clk { fill: none; stroke: var(--wire); stroke-width: 1.5; }
+.node:focus-visible .shape { stroke: var(--ac); stroke-width: 3; }
+.node.sel .shape { stroke: var(--ac); stroke-width: 3; }
+.node.tr-up .shape { stroke: var(--up); stroke-width: 2.5; }
+.node.tr-down .shape { stroke: var(--down); stroke-width: 2.5; }
+.node.dim, .wire.dim { opacity: 0.25; }
+
+.wire .line { fill: none; stroke: var(--wire); stroke-width: 1.3; stroke-linejoin: round; }
+.wire .line.bus { stroke-width: 2.4; }
+.wire .hit { fill: none; stroke: transparent; stroke-width: 10; cursor: pointer; }
+.wire .buslabel { fill: var(--mu); font: 600 10px ui-monospace, Menlo, monospace; text-anchor: start; pointer-events: none; }
+.wire:hover .line { stroke: var(--ac); }
+.wire.sel .line { stroke: var(--ac); stroke-width: 3; }
+.wire.tr-up .line { stroke: var(--up); }
+.wire.tr-down .line { stroke: var(--down); }

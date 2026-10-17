@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="Interactive RTL-to-hardware visualizer for a documented Verilog/SystemVerilog subset" />
+  <title>RTL Circuit Visualizer</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body>
+  <div id="app">
+    <header class="app-header">
+      <strong class="brand">RTL Circuit Visualizer</strong>
+      <span class="sub">Verilog / SystemVerilog subset → hardware</span>
+      <span class="spacer"></span>
+      <span id="status" class="status" role="status" aria-live="polite"></span>
+      <select id="module-select" hidden aria-label="Module"></select>
+      <button id="export-svg" type="button" disabled>Export SVG</button>
+      <button id="export-png" type="button" disabled>Export PNG</button>
+      <button id="theme-toggle" type="button">Light mode</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel editor-panel" aria-label="RTL editor">
+        <div class="bar">
+          <select id="example-select" aria-label="Example"></select>
+          <button id="load-btn" type="button">Load</button>
+          <button id="viz-btn" type="button" class="pri">Visualize</button>
+          <button id="copy-btn" type="button">Copy</button>
+          <button id="clear-btn" type="button">Clear</button>
+        </div>
+        <p id="example-note" class="note"></p>
+        <div id="editor"></div>
+      </section>
+
+      <section class="panel canvas-panel" aria-label="Circuit diagram">
+        <div class="bar">
+          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          <button id="zoom-out" type="button" aria-label="Zoom out">−</button>
+          <button id="fit-btn" type="button">Fit</button>
+          <button id="reset-btn" type="button">Reset layout</button>
+          <label class="check"><input id="trace-toggle" type="checkbox" checked /> Trace signals</label>
+          <span id="module-name" class="sub"></span>
+        </div>
+        <div class="canvas-wrap">
+          <svg id="cv" role="img" tabindex="0" aria-label="Circuit diagram"></svg>
+          <div id="canvas-overlay" class="overlay" hidden></div>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span class="lg comb">combinational</span><span class="lg seq">sequential</span><span class="lg io">port</span>
+          <span class="lg bad">undriven / conflict</span><span class="lg up">fan-in trace</span><span class="lg down">fan-out trace</span>
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Inspection">
+        <details open class="sec"><summary>Selected item</summary><div id="inspector"></div></details>
+        <details id="diag-section" open class="sec"><summary>Diagnostics <span id="diag-count" class="count"></span></summary><div id="diagnostics"></div></details>
+        <details open class="sec"><summary>Statistics</summary><div id="stats"></div></details>
+        <details open class="sec"><summary>Module hierarchy</summary><div id="hierarchy"></div></details>
+        <details open class="sec"><summary>RTL explanation</summary><div id="explanation"></div></details>
+      </aside>
+    </main>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
